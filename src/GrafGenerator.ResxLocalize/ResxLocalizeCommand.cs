@@ -9,7 +9,7 @@ namespace GrafGenerator.ResxLocalize
     [Cmdlet(VerbsCommon.New, "LocalizedResx", DefaultParameterSetName = "StringsFileInputParameterSet")]
     public class ResxLocalizeCommand : PSCmdlet
     {
-        private JObject _jsonInput;
+        private JArray _jsonInput;
 
         #region Parameters
 
@@ -73,7 +73,7 @@ namespace GrafGenerator.ResxLocalize
                     "InvalidOperation", ErrorCategory.InvalidOperation, stringJsonContent));
             }
 
-            _jsonInput = JObject.Parse(stringJsonContent);
+            _jsonInput = JArray.Parse(stringJsonContent);
         }
 
         protected override void ProcessRecord()
