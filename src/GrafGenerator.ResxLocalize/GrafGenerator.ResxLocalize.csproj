@@ -50,6 +50,9 @@
   <ItemGroup>
     <Compile Include="ResxLocalizeCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResxLocalizer.Static.cs" />
+    <Compile Include="ResxLocalizer.cs" />
+    <Compile Include="StringStore.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GrafGenerator.ResxLocalize.psd1" />
