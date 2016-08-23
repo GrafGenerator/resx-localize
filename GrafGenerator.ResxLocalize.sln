@@ -5,6 +5,12 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrafGenerator.ResxLocalize", "src\GrafGenerator.ResxLocalize\GrafGenerator.ResxLocalize.csproj", "{DC07DC30-7E47-475F-846D-64F43407C9A4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{6413048B-3AE4-4712-A87D-A8489CFCD6F5}"
+	ProjectSection(SolutionItems) = preProject
+		build\build-and-deploy.ps1 = build\build-and-deploy.ps1
+		build\Invoke-MsBuild.psm1 = build\Invoke-MsBuild.psm1
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
