@@ -7,7 +7,7 @@ using Newtonsoft.Json.Linq;
 
 namespace GrafGenerator.ResxLocalize.XlsxToJsonCommand
 {
-    [Cmdlet(VerbsData.Convert, "XlsxToJson", DefaultParameterSetName = "DefaultParameterSet")]
+    [Cmdlet(VerbsCommon.Copy, "XlsxToJson", DefaultParameterSetName = "DefaultParameterSet")]
     public class XlsxToJsonCommand : PSCmdlet
     {
         #region Parameters
@@ -64,7 +64,7 @@ namespace GrafGenerator.ResxLocalize.XlsxToJsonCommand
             var keys = GetKeys(worksheet).ToArray();
             var keysCount = keys.Length;
             var rows = new List<string[]>();
-            var currentRow = 1;
+            var currentRow = 2;
 
             var row = GetRow(worksheet, currentRow, keysCount).ToArray();
 
@@ -72,6 +72,7 @@ namespace GrafGenerator.ResxLocalize.XlsxToJsonCommand
             {
                 rows.Add(row);
                 currentRow++;
+                row = GetRow(worksheet, currentRow, keysCount).ToArray();
             }
 
             return rows
@@ -84,7 +85,7 @@ namespace GrafGenerator.ResxLocalize.XlsxToJsonCommand
 
         private IEnumerable<string> GetKeys(IXLWorksheet worksheet)
         {
-            var cell = worksheet.Cell(0, 0);
+            var cell = worksheet.Cell(1, 1);
             while (!string.IsNullOrEmpty(cell.Value.ToString()))
             {
                 yield return cell.Value.ToString();
@@ -94,7 +95,7 @@ namespace GrafGenerator.ResxLocalize.XlsxToJsonCommand
 
         private IEnumerable<string> GetRow(IXLWorksheet worksheet, int row, int cellCount)
         {
-            var cell = worksheet.Cell(row, 0);
+            var cell = worksheet.Cell(row, 1);
             var i = cellCount;
 
             while (i > 0)
