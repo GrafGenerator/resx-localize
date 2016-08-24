@@ -10,6 +10,7 @@ namespace GrafGenerator.ResxLocalize
     public class ResxLocalizeCommand : PSCmdlet
     {
         private JArray _jsonInput;
+        private readonly string[] _defaultCultures = new[] {"ar-AE", "cs-CZ", "el-GR", "es-CL", "kk-KZ", "ky-KG", "ru-RU", "uk-UA"};
 
         #region Parameters
 
@@ -57,7 +58,7 @@ namespace GrafGenerator.ResxLocalize
 
             if (TargetCultures == null || TargetCultures.Length == 0)
             {
-                TargetCultures = new[] {"ar-AE", "cs-CZ", "el-GR", "es-CL", "kk-KZ", "ky-KG", "ru-RU", "uk-UA"};
+                TargetCultures = _defaultCultures;
             }
 
             SourceCulture = CultureInfo.CreateSpecificCulture(SourceCulture).Name;
