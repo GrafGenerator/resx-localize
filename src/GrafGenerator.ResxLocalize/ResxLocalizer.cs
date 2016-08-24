@@ -3,7 +3,7 @@ using System.Xml.XPath;
 
 namespace GrafGenerator.ResxLocalize
 {
-    internal partial class ResxLocalizer
+    public partial class ResxLocalizer
     {
         private ResxLocalizer(XDocument sourceResx, StringStore stringStore, string targetKey)
         {
@@ -22,7 +22,7 @@ namespace GrafGenerator.ResxLocalize
         private XDocument ProduceOutputXml()
         {
             var doc = new XDocument(SourceResx);
-            var values = doc.XPathSelectElements("//data/value");
+            var values = doc.XPathSelectElements("/root/data/value");
 
             foreach (var value in values)
             {

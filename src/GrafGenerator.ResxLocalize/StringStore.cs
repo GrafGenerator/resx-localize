@@ -5,7 +5,7 @@ using Newtonsoft.Json.Linq;
 
 namespace GrafGenerator.ResxLocalize
 {
-    internal class StringStore
+    public class StringStore
     {
         public StringStore(JArray data, string sourceKey)
         {
