@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 
-namespace GrafGenerator.ResxLocalize
+namespace GrafGenerator.ResxLocalize.ResxLocalizeCommand
 {
     public class StringStore
     {

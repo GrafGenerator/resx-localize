@@ -4,7 +4,7 @@ using System.Linq;
 using System.Xml.Linq;
 using Newtonsoft.Json.Linq;
 
-namespace GrafGenerator.ResxLocalize
+namespace GrafGenerator.ResxLocalize.ResxLocalizeCommand
 {
     public partial class ResxLocalizer
     {

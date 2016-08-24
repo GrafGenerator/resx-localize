@@ -12,7 +12,7 @@ namespace GrafGenerator.ResxLocalize.Tests
         {
             var keyName = "presentKey";
 
-            var doc = ResxLocalizer.Localize(Input.XDoc.Sample, Input.JData.Sample, "en", new []{"ru"}).FirstOrDefault()?.Item2;
+            var doc = ResxLocalizeCommand.ResxLocalizer.Localize(Input.XDoc.Sample, Input.JData.Sample, "en", new []{"ru"}).FirstOrDefault()?.Item2;
             Assert.That(doc, Is.Not.Null);
 
             var value = doc.XPathSelectElement($"/root/data[@name='{keyName}']/value");
@@ -26,7 +26,7 @@ namespace GrafGenerator.ResxLocalize.Tests
         {
             var keyName = "missingKey";
 
-            var doc = ResxLocalizer.Localize(Input.XDoc.Sample, Input.JData.Sample, "en", new[] { "ru" }).FirstOrDefault()?.Item2;
+            var doc = ResxLocalizeCommand.ResxLocalizer.Localize(Input.XDoc.Sample, Input.JData.Sample, "en", new[] { "ru" }).FirstOrDefault()?.Item2;
             Assert.That(doc, Is.Not.Null);
 
             var value = doc.XPathSelectElement($"/root/data[@name='{keyName}']/value");
@@ -41,7 +41,7 @@ namespace GrafGenerator.ResxLocalize.Tests
         {
             var keyName = "presentKey";
 
-            var doc = ResxLocalizer.Localize(Input.XDoc.Sample, Input.JData.Sample, "en", new[] { "en" }).FirstOrDefault()?.Item2;
+            var doc = ResxLocalizeCommand.ResxLocalizer.Localize(Input.XDoc.Sample, Input.JData.Sample, "en", new[] { "en" }).FirstOrDefault()?.Item2;
             Assert.That(doc, Is.Not.Null);
 
             var value = doc.XPathSelectElement($"/root/data[@name='{keyName}']/value");
@@ -55,7 +55,7 @@ namespace GrafGenerator.ResxLocalize.Tests
         {
             var keyName = "presentKey";
 
-            var doc = ResxLocalizer.Localize(Input.XDoc.Sample, Input.JData.Sample, "en", new[] { "nonexistingkey" }).FirstOrDefault()?.Item2;
+            var doc = ResxLocalizeCommand.ResxLocalizer.Localize(Input.XDoc.Sample, Input.JData.Sample, "en", new[] { "nonexistingkey" }).FirstOrDefault()?.Item2;
             Assert.That(doc, Is.Not.Null);
 
             var value = doc.XPathSelectElement($"/root/data[@name='{keyName}']/value");

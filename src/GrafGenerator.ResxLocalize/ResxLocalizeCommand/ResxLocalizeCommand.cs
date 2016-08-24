@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Globalization;
 using System.IO;
 using System.Management.Automation;
 using Newtonsoft.Json.Linq;
 
-namespace GrafGenerator.ResxLocalize
+namespace GrafGenerator.ResxLocalize.ResxLocalizeCommand
 {
     [Cmdlet(VerbsCommon.New, "LocalizedResx", DefaultParameterSetName = "StringsFileInputParameterSet")]
     public class ResxLocalizeCommand : PSCmdlet

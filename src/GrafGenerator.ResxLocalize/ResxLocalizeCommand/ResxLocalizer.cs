@@ -1,7 +1,7 @@
 ﻿using System.Xml.Linq;
 using System.Xml.XPath;
 
-namespace GrafGenerator.ResxLocalize
+namespace GrafGenerator.ResxLocalize.ResxLocalizeCommand
 {
     public partial class ResxLocalizer
     {
