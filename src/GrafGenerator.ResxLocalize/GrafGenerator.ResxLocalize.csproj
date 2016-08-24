@@ -55,7 +55,9 @@
     <Compile Include="StringStore.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="GrafGenerator.ResxLocalize.psd1" />
+    <None Include="GrafGenerator.ResxLocalize.psd1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

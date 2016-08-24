@@ -11,6 +11,8 @@ $installFolder = "$docsFolder\WindowsPowerShell\Modules\$moduleName"
 $modulePath = "$installFolder\$moduleName.dll"
 $manifestPath = "$installFolder\$moduleName.psd1"
 
+$dependencies = @("Newtonsoft.Json")
+
 $rootFolder = "$PSScriptRoot\.."
 $artifactsFolder = "$rootFolder\artifacts"
 $solutionPath = "$rootFolder\GrafGenerator.ResxLocalize.sln"
@@ -19,7 +21,7 @@ $solutionPath = "$rootFolder\GrafGenerator.ResxLocalize.sln"
 
 # build
 
-$buildSucceeded = Invoke-MsBuild -Path $solutionPath -MsBuildParameters "/target:Clean;Build /property:Configuration=Release;OutDir=$artifactsFolder"
+$buildSucceeded = Invoke-MsBuild -Path $solutionPath -MsBuildParameters "/target:Clean;Build /property:Configuration=Debug;OutDir=$artifactsFolder"
 
 if ($buildSucceeded)
 { Write-Host "Build completed successfully." }
@@ -36,6 +38,10 @@ New-Item -ItemType File -Path $modulePath -Force | Out-Null
 
 Copy-Item -Path "$artifactsFolder\$moduleName.dll" -Destination $modulePath -Force | Out-Null
 Copy-Item -Path "$artifactsFolder\$moduleName.psd1" -Destination $manifestPath -Force | Out-Null
+
+foreach ($dep in $dependencies) {
+    Copy-Item -Path "$artifactsFolder\$dep.dll" -Destination $installFolder -Force | Out-Null
+}
 
 $dllExist = Test-Path $modulePath
 $psdExist = Test-Path $manifestPath

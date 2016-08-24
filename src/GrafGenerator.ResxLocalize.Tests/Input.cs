@@ -43,7 +43,7 @@ namespace GrafGenerator.ResxLocalize.Tests
         ""ru"": ""changed_ru"",
         ""en"": ""present too"",
         ""cs"": ""changed_cs""
-    },
+    }
 ]
             ");
         }
