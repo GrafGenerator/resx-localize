@@ -21,7 +21,7 @@ $solutionPath = "$rootFolder\GrafGenerator.ResxLocalize.sln"
 
 # build
 
-$buildSucceeded = Invoke-MsBuild -Path $solutionPath -MsBuildParameters "/target:Clean;Build /property:Configuration=Debug;OutDir=$artifactsFolder"
+$buildSucceeded = Invoke-MsBuild -Path $solutionPath -MsBuildParameters "/target:Clean;Build /property:Configuration=Release;OutDir=$artifactsFolder"
 
 if ($buildSucceeded)
 { Write-Host "Build completed successfully." }
