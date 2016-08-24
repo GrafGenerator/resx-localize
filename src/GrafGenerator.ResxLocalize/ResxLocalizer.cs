@@ -1,5 +1,5 @@
-﻿using System;
-using System.Xml.Linq;
+﻿using System.Xml.Linq;
+using System.Xml.XPath;
 
 namespace GrafGenerator.ResxLocalize
 {
@@ -19,10 +19,25 @@ namespace GrafGenerator.ResxLocalize
         private string TargetKey { get; }
 
 
-
         private XDocument ProduceOutputXml()
         {
-            throw new NotImplementedException();
+            var doc = new XDocument(SourceResx);
+            var values = doc.XPathSelectElements("//data/value");
+
+            foreach (var value in values)
+            {
+                var searchValue = value.Value;
+
+                if (!Store.Has(searchValue)) continue;
+                var ssi = Store[searchValue];
+
+                if (ssi.Has(TargetKey))
+                {
+                    value.Value = ssi[TargetKey];
+                }
+            }
+
+            return doc;
         }
     }
 }

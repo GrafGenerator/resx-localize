@@ -31,6 +31,8 @@ namespace GrafGenerator.ResxLocalize
 
         public StringStoreItem this[string key] => Items[key];
 
+        public bool Has(string key) => Items.ContainsKey(key);
+
         private class StringStoreItemSearchValueEqualityComparer : EqualityComparer<StringStoreItem>
         {
             public override bool Equals(StringStoreItem x, StringStoreItem y)
@@ -57,6 +59,8 @@ namespace GrafGenerator.ResxLocalize
             private IDictionary<string, string> Values { get; }
 
             public string this[string key] => Values[key];
+
+            public bool Has(string key) => Values.ContainsKey(key);
         }
     }
 }
