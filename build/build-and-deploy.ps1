@@ -11,7 +11,7 @@ $installFolder = "$docsFolder\WindowsPowerShell\Modules\$moduleName"
 $modulePath = "$installFolder\$moduleName.dll"
 $manifestPath = "$installFolder\$moduleName.psd1"
 
-$dependencies = @("Newtonsoft.Json")
+$dependencies = @("Newtonsoft.Json", "ClosedXML", "DocumentFormat.OpenXml")
 
 $rootFolder = "$PSScriptRoot\.."
 $artifactsFolder = "$rootFolder\artifacts"
