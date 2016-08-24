@@ -61,6 +61,7 @@
     <Compile Include="ResxLocalizeCommand\ResxLocalizer.Static.cs" />
     <Compile Include="ResxLocalizeCommand\ResxLocalizer.cs" />
     <Compile Include="ResxLocalizeCommand\StringStore.cs" />
+    <Compile Include="XlsxToJsonCommand\StringArrayExtensions.cs" />
     <Compile Include="XlsxToJsonCommand\XlsxToJsonCommand.cs" />
   </ItemGroup>
   <ItemGroup>
