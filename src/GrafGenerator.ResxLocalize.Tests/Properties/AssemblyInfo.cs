@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("GrafGenerator.ResxLocalize.Tests")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
+[assembly: AssemblyCopyright("Copyright © 2016 Nikita Ivanov")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
