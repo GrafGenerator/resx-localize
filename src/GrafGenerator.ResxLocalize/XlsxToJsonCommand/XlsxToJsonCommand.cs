@@ -7,7 +7,7 @@ using Newtonsoft.Json.Linq;
 
 namespace GrafGenerator.ResxLocalize.XlsxToJsonCommand
 {
-    [Cmdlet(VerbsCommon.Copy, "XlsxToJson", DefaultParameterSetName = "DefaultParameterSet")]
+    [Cmdlet(VerbsData.Convert, "XlsxToJson", DefaultParameterSetName = "DefaultParameterSet")]
     public class XlsxToJsonCommand : PSCmdlet
     {
         #region Parameters
