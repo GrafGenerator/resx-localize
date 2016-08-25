@@ -76,11 +76,12 @@ namespace GrafGenerator.ResxLocalize.ResxLocalizeCommand
         protected override void ProcessRecord()
         {
             var fileName = Path.GetFileNameWithoutExtension(SourceResxPath);
+            var fileInfo = new FileInfo(SourceResxPath);
             var localizationResult = ResxLocalizer.Localize(SourceResxPath, _jsonInput, SourceCulture, TargetCultures);
 
             foreach (var result in localizationResult)
             {
-                var newPath = fileName + "." + result.Item1 + ".resx";
+                var newPath = Path.Combine(fileInfo.DirectoryName ?? "", fileName + "." + result.Item1 + ".resx");
                 WriteVerbose($"Processing file '{SourceResxPath}' to '{newPath}' ");
 
                 result.Item2.Save(newPath);
