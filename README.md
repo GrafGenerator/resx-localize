@@ -29,10 +29,11 @@ JSON file sample:
 |0|SourceResxFile|yes|Path to source RESX file| - |
 |1|SourceStringsFile *or* SourceStrings|yes|Path to JSON file with strings *or* JSON string| - |
 |2|SourceCulture|yes|Source culture key, which will be used to match strings from RESX with strings from strings file| - |
-|3|TargetCultures|no|target cultures keys, which will be used to geenrate localized RESX files| `@("ar-AE","cs-CZ","el-GR","es-CL","kk-KZ","ky-KG","ru-RU","uk-UA")`|
+|3|TargetCultures|no|Target cultures keys, which will be used to generate localized RESX files| `@("ar-AE","cs-CZ","el-GR","es-CL","kk-KZ","ky-KG","ru-RU","uk-UA")`|
 
 Given input *{filename}*.resx, this cmdlet produces localized *{filename}*.*{culture}*.resx for each specified target culture in the same folder as the original RESX file.
-Note that this cmdlet remove any duplicate strings keys (source culture) from strings file before processing.
+
+Note that this cmdlet remove any duplicate strings keys (by source culture) from strings source after it is loaded (from file or raw string).
 
 ## Copy-XlsxToJson
 |Position|Parameter|Required|Description|Default value|
@@ -46,7 +47,7 @@ First row must contain culture codes (keys), first empty cell in the row treated
 Each row below the first row, that has at least one non-empty cell will be transformed to appropriate JSON object.
 First row with no data treated as end of rows.
 
-## Instalation
+## Installation
 1. Clone repository and open *build* folder
 2. Run *build-and-deploy.ps1*.
 3. Open new Powershell window - functions should be loaded and ready for use.
