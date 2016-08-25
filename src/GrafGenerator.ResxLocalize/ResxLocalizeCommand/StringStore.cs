@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using MoreLinq;
 using Newtonsoft.Json.Linq;
 
 namespace GrafGenerator.ResxLocalize.ResxLocalizeCommand
@@ -9,22 +10,21 @@ namespace GrafGenerator.ResxLocalize.ResxLocalizeCommand
     {
         public StringStore(JArray data, string sourceKey)
         {
-            Items =
-                (
-                    from jobject in data.OfType<JObject>()
-                    let props = jobject.Properties().ToArray()
-                    let propSearchValue =
-                        props.FirstOrDefault(p => p.Name.Equals(sourceKey, StringComparison.InvariantCultureIgnoreCase))
-                            ?.Value.ToString()
-                    where propSearchValue != null
-                    let ssi = new StringStoreItem(
-                        propSearchValue,
-                        props.ToDictionary(p => p.Name, p => p.Value.ToString())
-                        )
-                    select ssi
+            Items = (
+                from jobject in data.OfType<JObject>()
+                let props = jobject.Properties().ToArray()
+                let propSearchValue =
+                    props.FirstOrDefault(p => p.Name.Equals(sourceKey, StringComparison.InvariantCultureIgnoreCase))
+                        ?.Value.ToString()
+                where propSearchValue != null
+                let ssi = new StringStoreItem(
+                    propSearchValue,
+                    props.ToDictionary(p => p.Name, p => p.Value.ToString())
                     )
-                    .Distinct(new StringStoreItemSearchValueEqualityComparer())
-                    .ToDictionary(s => s.SearchValue);
+                select ssi
+                )
+                .DistinctBy(s => s.SearchValue)
+                .ToDictionary(s => s.SearchValue);
         }
 
         private IDictionary<string, StringStoreItem> Items { get; }
@@ -32,19 +32,6 @@ namespace GrafGenerator.ResxLocalize.ResxLocalizeCommand
         public StringStoreItem this[string key] => Items[key];
 
         public bool Has(string key) => Items.ContainsKey(key);
-
-        private class StringStoreItemSearchValueEqualityComparer : EqualityComparer<StringStoreItem>
-        {
-            public override bool Equals(StringStoreItem x, StringStoreItem y)
-            {
-                return string.Equals(x.SearchValue, y.SearchValue);
-            }
-
-            public override int GetHashCode(StringStoreItem obj)
-            {
-                return obj?.GetHashCode() ?? 0;
-            }
-        }
 
 
         public class StringStoreItem
